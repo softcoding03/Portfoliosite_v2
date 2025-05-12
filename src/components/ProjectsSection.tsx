@@ -355,39 +355,97 @@ const ProjectsSection: React.FC = () => {
           <div className={`w-24 h-1 mx-auto mb-6 ${theme === 'dark' ? 'bg-sky-400' : 'bg-sky-600'}`}></div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          {projects.map((project) => (
+        <div className="max-w-4xl mx-auto space-y-12">
+          {projects.map((project, index) => (
             <div
               key={project.id}
               onClick={() => openModal(project)}
-              className={`p-6 rounded-lg transform transition-all duration-300 hover:scale-[1.02] cursor-pointer ${
+              className={`group relative overflow-hidden rounded-xl transform transition-all duration-500 hover:scale-[1.02] cursor-pointer ${
                 theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'
               }`}
+              data-aos="fade-up"
+              data-aos-delay={index * 100}
             >
-              <div className="flex flex-wrap gap-2 mb-4">
-                {project.tags.map((tag, index) => (
-                  <span
-                    key={index}
-                    className={`px-3 py-1 rounded-full text-sm ${
-                      theme === 'dark'
-                        ? 'bg-sky-400/10 text-sky-300'
-                        : 'bg-sky-50 text-sky-700'
-                    }`}
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
+              {project.images && project.images[0] && (
+                <div className="relative aspect-[16/9] overflow-hidden">
+                  <img
+                    src={project.images[0].src}
+                    alt={project.images[0].alt}
+                    className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent opacity-80"></div>
+                </div>
+              )}
 
-              <h3 className={`text-xl font-bold mb-2 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
-                {project.title}
-              </h3>
-              <p className={`mb-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
-                {project.description}
-              </p>
-              <div className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
-                <p>기간: {project.period}</p>
-                <p>인원: {project.teamSize}</p>
+              <div className="relative p-8">
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {project.tags.map((tag, index) => (
+                    <span
+                      key={index}
+                      className={`px-3 py-1 rounded-full text-sm font-medium ${
+                        theme === 'dark'
+                          ? 'bg-sky-400/10 text-sky-300'
+                          : 'bg-sky-50 text-sky-700'
+                      }`}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <h3 className={`text-2xl font-bold mb-3 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                  {project.title}
+                </h3>
+
+                <p className={`mb-4 text-lg ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+                  {project.description}
+                </p>
+
+                <div className={`grid grid-cols-2 gap-4 mb-6 text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
+                  <div>
+                    <p className="font-medium">기간</p>
+                    <p>{project.period}</p>
+                  </div>
+                  <div>
+                    <p className="font-medium">인원</p>
+                    <p>{project.teamSize}</p>
+                  </div>
+                </div>
+
+                <div className="flex gap-4">
+                  {project.githubUrl !== '#' && (
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className={`flex items-center px-4 py-2 rounded-lg transition-all transform hover:scale-105 ${
+                        theme === 'dark'
+                          ? 'bg-sky-500 hover:bg-sky-400 text-white'
+                          : 'bg-sky-600 hover:bg-sky-700 text-white'
+                      }`}
+                    >
+                      <Github size={18} className="mr-2" />
+                      View Code
+                    </a>
+                  )}
+                  {project.liveUrl && (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className={`flex items-center px-4 py-2 rounded-lg transition-all transform hover:scale-105 ${
+                        theme === 'dark'
+                          ? 'bg-gray-800 hover:bg-gray-700 text-white'
+                          : 'bg-gray-100 hover:bg-gray-200 text-gray-900'
+                      }`}
+                    >
+                      <ExternalLink size={18} className="mr-2" />
+                      Live Demo
+                    </a>
+                  )}
+                </div>
               </div>
             </div>
           ))}
