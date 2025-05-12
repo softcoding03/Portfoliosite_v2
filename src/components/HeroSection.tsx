@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Terminal, Github, Linkedin, ArrowDown, Sparkles, Rocket } from 'lucide-react';
+import { Terminal, Github, ArrowDown, Sparkles, Code, Braces, Database, Cloud } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 
 const HeroSection: React.FC = () => {
@@ -10,8 +10,15 @@ const HeroSection: React.FC = () => {
     const typeWriterEffect = async () => {
       if (!terminalRef.current) return;
       
-      const text = "const developer = {\n  name: 'John Doe',\n  role: 'Backend Developer',\n  skills: ['Node.js', 'Python', 'Java', 'Databases'],\n  passion: 'Building robust and scalable systems'\n};";
+      const text = `const developer = {
+  name: 'KIM YangSoo',
+  role: 'Backend Developer',
+  expertise: ['Java', 'Spring', 'Kotlin'],
+  passion: 'Building robust systems with clean code'
+};`;
+      
       let i = 0;
+      terminalRef.current.innerHTML = '';
       
       const type = () => {
         if (i < text.length && terminalRef.current) {
@@ -33,8 +40,29 @@ const HeroSection: React.FC = () => {
   }, []);
 
   return (
-    <section id="home" className={`min-h-screen flex flex-col justify-center ${theme === 'dark' ? 'bg-gradient-radial from-gray-900 via-gray-800 to-gray-900' : 'bg-gradient-radial from-sky-50 via-white to-sky-50'} pt-16`}>
-      <div className="container mx-auto px-4 sm:px-6 py-12 grid md:grid-cols-2 gap-8 items-center">
+    <section id="home" className={`min-h-screen flex flex-col justify-center ${theme === 'dark' ? 'bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900' : 'bg-gradient-to-b from-sky-50 via-white to-sky-50'} pt-16`}>
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute inset-0 opacity-5">
+          {[...Array(20)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                transform: `rotate(${Math.random() * 360}deg)`,
+              }}
+            >
+              {i % 4 === 0 && <Code size={24} />}
+              {i % 4 === 1 && <Braces size={24} />}
+              {i % 4 === 2 && <Database size={24} />}
+              {i % 4 === 3 && <Cloud size={24} />}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="container mx-auto px-4 sm:px-6 py-12 grid md:grid-cols-2 gap-8 items-center relative">
         <div className="order-2 md:order-1" data-aos="fade-right">
           <div className={`mb-4 inline-flex items-center gap-2 ${theme === 'dark' ? 'bg-sky-400/10 text-sky-400' : 'bg-sky-600/10 text-sky-700'} rounded-full px-4 py-1 text-sm font-medium`}>
             <Sparkles size={16} className="animate-float" />
@@ -42,7 +70,7 @@ const HeroSection: React.FC = () => {
           </div>
           
           <h1 className={`text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
-          <span className={`${theme === 'dark' ? 'text-sky-400' : 'text-sky-600'}`}>KIM YangSoo</span><br/><br/>
+            <span className={`${theme === 'dark' ? 'text-sky-400' : 'text-sky-600'}`}>KIM YangSoo</span><br/><br/>
             <span>
               Code for Systems,
             </span><br/>
@@ -56,18 +84,24 @@ const HeroSection: React.FC = () => {
         </div>
         
         <div className="order-1 md:order-2 flex justify-center md:justify-end" data-aos="fade-left">
-          <div 
-            className={`w-full max-w-md p-4 rounded-lg transform transition-all duration-300 hover:scale-[1.02] ${
-              theme === 'dark' ? 'bg-gray-800 shadow-[0_0_15px_rgba(56,189,248,0.1)]' : 'bg-white shadow-xl'
-            }`}
-          >
+          <div className={`w-full max-w-md p-6 rounded-lg backdrop-blur-sm transform transition-all duration-300 hover:scale-[1.02] ${
+            theme === 'dark' 
+              ? 'bg-gray-800/80 shadow-[0_0_15px_rgba(56,189,248,0.1)]' 
+              : 'bg-white/80 shadow-xl'
+          }`}>
             <div className="flex items-center mb-4">
-              <Terminal size={24} className={`mr-2 ${theme === 'dark' ? 'text-sky-400' : 'text-sky-600'}`} />
-              <div className={`text-sm font-mono ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>developer.profile</div>
+              <div className="flex space-x-2">
+                <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                <div className="w-3 h-3 rounded-full bg-green-500"></div>
+              </div>
+              <div className={`ml-4 text-sm font-mono ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+                developer.profile
+              </div>
             </div>
             <div 
               ref={terminalRef} 
-              className={`font-mono text-sm whitespace-pre-wrap min-h-60 ${
+              className={`font-mono text-sm whitespace-pre-wrap min-h-[200px] ${
                 theme === 'dark' ? 'text-sky-400' : 'text-sky-600'
               }`}
             ></div>

@@ -43,6 +43,7 @@ export default {
         'modal-fade': 'modalFade 0.3s ease-out',
         'modal-slide': 'modalSlide 0.3s ease-out',
         'float': 'float 3s ease-in-out infinite',
+        'gradient': 'gradient 15s ease infinite',
       },
       keyframes: {
         blink: {
@@ -61,12 +62,18 @@ export default {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-10px)' },
         },
+        gradient: {
+          '0%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+          '100%': { backgroundPosition: '0% 50%' },
+        },
       },
       transitionProperty: {
         'transform-opacity': 'transform, opacity',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'gradient-conic': 'conic-gradient(var(--tw-gradient-stops))',
       },
     },
   },
