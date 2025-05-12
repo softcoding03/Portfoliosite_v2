@@ -53,55 +53,6 @@ const HeroSection: React.FC = () => {
           <p className={`text-lg mb-8 max-w-xl ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
             백엔드를 넘어, 팀과 협업하고 사용자를 생각하는 개발자 김양수입니다. ✨
           </p>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <a 
-              href="#contact" 
-              className={`px-6 py-3 flex items-center justify-center gap-2 ${
-                theme === 'dark' 
-                  ? 'bg-sky-500 hover:bg-sky-400' 
-                  : 'bg-sky-600 hover:bg-sky-700'
-              } text-white font-medium rounded-md transition-all duration-300 transform hover:scale-105 hover:shadow-lg`}
-            >
-              <Rocket size={18} className="animate-float" />
-              Get in Touch
-            </a>
-            <a 
-              href="#projects" 
-              className={`px-6 py-3 ${
-                theme === 'dark' 
-                  ? 'bg-gray-800 text-white hover:bg-gray-700' 
-                  : 'bg-white text-gray-900 border border-gray-300 hover:bg-gray-100'
-              } font-medium rounded-md transition-all duration-300 transform hover:scale-105 hover:shadow-lg text-center`}
-            >
-              View Projects 🚀
-            </a>
-          </div>
-          <div className="mt-8 flex items-center space-x-4">
-            <a 
-              href="https://github.com" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className={`p-2 rounded-full ${
-                theme === 'dark' 
-                  ? 'bg-gray-800 hover:bg-gray-700 text-white' 
-                  : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
-              } transition-all duration-300 transform hover:scale-110`}
-            >
-              <Github size={20} />
-            </a>
-            <a 
-              href="https://linkedin.com" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className={`p-2 rounded-full ${
-                theme === 'dark' 
-                  ? 'bg-gray-800 hover:bg-gray-700 text-white' 
-                  : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
-              } transition-all duration-300 transform hover:scale-110`}
-            >
-              <Linkedin size={20} />
-            </a>
-          </div>
         </div>
         
         <div className="order-1 md:order-2 flex justify-center md:justify-end" data-aos="fade-left">

@@ -36,12 +36,12 @@ const ExperienceSection: React.FC = () => {
       location: '서울특별시 강남구',
       period: '2022년 12월 - 2023년 6월',
       description: [
-        'Java 문법, 객체지향 개념, JDBC 등을 활용한 백엔드 기초 학습',
-        'Oracle과 MySQL을 활용한 SQL 쿼리 작성 및 DB 설계 학습',
-        'JSP, Servlet, JavaScript 기반의 웹 UI 구현 및 MVC 패턴 학습',
-        'Spring 프레임워크 기반 게시판 개발 및 AOP, Mybatis 적용 경험',
-        '쇼핑몰 구축 프로젝트 2건 수행을 통해 주문·결제·장바구니 기능 개발 경험',
-        'Git을 활용한 협업 경험 및 버전 관리 학습'
+        '6개월간의 실무 중심 교육과정을 통해 백엔드 개발의 전반적인 역량 습득',
+        'Java 기반의 객체지향 프로그래밍과 JSP와 MVC 패턴 구조 이해 ',
+        'Spring 프레임워크 기반 게시판 구현 및 Mybatis, AOP 기술 실습',
+        'Oracle과 MySQL 기반 SQL 작성 및 데이터베이스 설계 경험',
+        '2건의 쇼핑몰 구축 프로젝트 수행을 통해 주문, 결제, 게시판, 댓글 기능을 직접 개발',
+        'Git을 통한 협업과 버전 관리 방법론 실습'
       ],
       technologies: [
         { name: 'Java', icon: <Code size={16} />, level: 'primary' },
@@ -74,14 +74,13 @@ const ExperienceSection: React.FC = () => {
       id: 2,
       role: '매직에꼴 - 웹 백엔드 개발자',
       company: '매직에꼴',
-      location: 'Boston, MA',
+      location: '서울특별시, 성동구',
       period: '2023년 8월 - 현재',
       description: [
-        'Kotlin + Spring Boot 기반 Restful API 개발 수행',
-        '출결관리, 영상 업로드, 인증 기능 등 주요 도메인의 DB 설계 및 API 개발',
-        'MySQL 데이터베이스 설계 및 최적화',
-        'Docker 기반 서버 운용 및 GitAction CI/CD 배포 경험',
-        '주요 프로젝트: 교육관리 플랫폼(LMS) 구축, Wecandeo API 마이그레이션, 출결 기능 신규 설계'
+        '교육관리 플랫폼(LMS) 백엔드 개발자로서 프로젝트 기획부터 설계, 개발까지 전반에 참여',
+        'Kotlin + Spring Boot 환경에서 출결 관리 및 영상 기능 등 주요 도메인 API 개발',
+        '요구사항 정리부터 프론트/디자인 팀과의 긴밀한 협업을 통해 사용자 중심 기능 구현',
+        'Docker 기반 서버 환경 구성 및 GitHub Actions를 통한 CI/CD 배포 자동화 경험',
       ],
       technologies: [
         { name: 'Kotlin', icon: <Code size={16} />, level: 'primary' },
@@ -119,9 +118,7 @@ const ExperienceSection: React.FC = () => {
             Work <span className={`${theme === 'dark' ? 'text-sky-400' : 'text-sky-600'}`}>Experience</span>
           </h2>
           <div className={`w-24 h-1 mx-auto mb-6 ${theme === 'dark' ? 'bg-sky-400' : 'bg-sky-600'}`}></div>
-          <p className={`text-lg ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
-            My professional journey and achievements in backend development ✨
-          </p>
+          
         </div>
         
         <div className="max-w-5xl mx-auto">
@@ -254,19 +251,6 @@ const ExperienceSection: React.FC = () => {
                 </div>
               ))}
             </div>
-          </div>
-          
-          <div className="mt-12 text-center">
-            <a 
-              href="#contact" 
-              className={`inline-flex items-center px-6 py-3 rounded-md text-white font-medium ${
-                theme === 'dark' 
-                  ? 'bg-sky-500 hover:bg-sky-400' 
-                  : 'bg-sky-600 hover:bg-sky-700'
-              } transition-colors duration-300`}
-            >
-              Let's Work Together ✨
-            </a>
           </div>
         </div>
       </div>
