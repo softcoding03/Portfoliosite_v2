@@ -1,12 +1,6 @@
 import React from 'react';
-import { Briefcase, Calendar, MapPin, TrendingUp, Target, Award, Zap, Star, Code, Database, Cloud } from 'lucide-react';
+import { Briefcase, Calendar, MapPin, Star, Code, Database } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
-
-interface Metric {
-  icon: JSX.Element;
-  value: string;
-  label: string;
-}
 
 interface Technology {
   name: string;
@@ -22,7 +16,6 @@ interface Experience {
   period: string;
   description: string[];
   technologies: Technology[];
-  metrics: Metric[];
 }
 
 const ExperienceSection: React.FC = () => {
@@ -44,30 +37,9 @@ const ExperienceSection: React.FC = () => {
         'Git을 통한 협업과 버전 관리 방법론 실습'
       ],
       technologies: [
-        { name: 'Java', icon: <Code size={16} />, level: 'primary' },
-        { name: 'JavaScript', icon: <Code size={16} />, level: 'primary' },
-        { name: 'Spring', icon: <Code size={16} />, level: 'primary' },
-        { name: 'MySQL', icon: <Database size={16} />, level: 'primary' },
-        { name: 'jQuery', icon: <Cloud size={16} />, level: 'secondary' },
-        { name: 'Naver cloud', icon: <Cloud size={16} />, level: 'secondary' },
-        { name: 'Git', icon: <Cloud size={16} />, level: 'secondary' }
-      ],
-      metrics: [
-        {
-          icon: <TrendingUp size={20} className="text-emerald-500" />,
-          value: '99.99%',
-          label: 'System Uptime'
-        },
-        {
-          icon: <Zap size={20} className="text-amber-500" />,
-          value: '65%',
-          label: 'Performance Boost'
-        },
-        {
-          icon: <Target size={20} className="text-sky-500" />,
-          value: '2M+',
-          label: 'Daily API Requests'
-        }
+        { name: 'Java', icon: <Code size={32} className="text-red-500" />, level: 'primary' },
+        { name: 'Spring', icon: <Code size={32} className="text-green-500" />, level: 'primary' },
+        { name: 'MySQL', icon: <Database size={32} className="text-blue-500" />, level: 'primary' }
       ]
     },
     {
@@ -83,29 +55,9 @@ const ExperienceSection: React.FC = () => {
         'Docker 기반 서버 환경 구성 및 GitHub Actions를 통한 CI/CD 배포 자동화 경험',
       ],
       technologies: [
-        { name: 'Kotlin', icon: <Code size={16} />, level: 'primary' },
-        { name: 'SpringBoot', icon: <Code size={16} />, level: 'primary' },
-        { name: 'MySQL', icon: <Database size={16} />, level: 'primary' },
-        { name: 'Kotlin Exposed DAO', icon: <Database size={16} />, level: 'secondary' },
-        { name: 'Git', icon: <Cloud size={16} />, level: 'secondary' },
-        { name: 'Docker', icon: <Cloud size={16} />, level: 'secondary' }
-      ],
-      metrics: [
-        {
-          icon: <TrendingUp size={20} className="text-emerald-500" />,
-          value: '45%',
-          label: 'Query Performance'
-        },
-        {
-          icon: <Award size={20} className="text-purple-500" />,
-          value: '500K+',
-          label: 'Active Users'
-        },
-        {
-          icon: <Zap size={20} className="text-amber-500" />,
-          value: '40%',
-          label: 'Response Time'
-        }
+        { name: 'Kotlin', icon: <Code size={32} className="text-purple-500" />, level: 'primary' },
+        { name: 'Spring Boot', icon: <Code size={32} className="text-green-500" />, level: 'primary' },
+        { name: 'MySQL', icon: <Database size={32} className="text-blue-500" />, level: 'primary' }
       ]
     }
   ];
@@ -118,7 +70,6 @@ const ExperienceSection: React.FC = () => {
             Work <span className={`${theme === 'dark' ? 'text-sky-400' : 'text-sky-600'}`}>Experience</span>
           </h2>
           <div className={`w-24 h-1 mx-auto mb-6 ${theme === 'dark' ? 'bg-sky-400' : 'bg-sky-600'}`}></div>
-          
         </div>
         
         <div className="max-w-5xl mx-auto">
@@ -213,9 +164,9 @@ const ExperienceSection: React.FC = () => {
                           </div>
                         </div>
 
-                        {/* Key Metrics */}
+                        {/* Technology Icons Grid */}
                         <div className="grid grid-cols-3 gap-4 mb-6">
-                          {exp.metrics.map((metric, i) => (
+                          {exp.technologies.map((tech, i) => (
                             <div 
                               key={i}
                               className={`p-4 rounded-lg text-center transform transition-all duration-300 hover:scale-105 ${
@@ -225,13 +176,10 @@ const ExperienceSection: React.FC = () => {
                               }`}
                             >
                               <div className="flex justify-center mb-2">
-                                {metric.icon}
+                                {tech.icon}
                               </div>
-                              <div className={`text-xl font-bold mb-1 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
-                                {metric.value}
-                              </div>
-                              <div className={`text-xs ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
-                                {metric.label}
+                              <div className={`text-sm font-medium ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+                                {tech.name}
                               </div>
                             </div>
                           ))}
