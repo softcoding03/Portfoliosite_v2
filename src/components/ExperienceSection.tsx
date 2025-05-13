@@ -1,10 +1,10 @@
 import React from 'react';
-import { Briefcase, Calendar, MapPin, Star, Code, Database } from 'lucide-react';
+import { Briefcase, Calendar, MapPin, Star } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 
 interface Technology {
   name: string;
-  icon: JSX.Element;
+  logo: string;
   level: 'primary' | 'secondary';
 }
 
@@ -37,9 +37,21 @@ const ExperienceSection: React.FC = () => {
         'Git을 통한 협업과 버전 관리 방법론 실습'
       ],
       technologies: [
-        { name: 'Java', icon: <Code size={32} className="text-red-500" />, level: 'primary' },
-        { name: 'Spring', icon: <Code size={32} className="text-green-500" />, level: 'primary' },
-        { name: 'MySQL', icon: <Database size={32} className="text-blue-500" />, level: 'primary' }
+        { 
+          name: 'Java',
+          logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg',
+          level: 'primary'
+        },
+        {
+          name: 'Spring',
+          logo: 'https://www.vectorlogo.zone/logos/springio/springio-icon.svg',
+          level: 'primary'
+        },
+        {
+          name: 'MySQL',
+          logo: 'https://www.vectorlogo.zone/logos/mysql/mysql-official.svg',
+          level: 'primary'
+        }
       ]
     },
     {
@@ -55,9 +67,21 @@ const ExperienceSection: React.FC = () => {
         'Docker 기반 서버 환경 구성 및 GitHub Actions를 통한 CI/CD 배포 자동화 경험',
       ],
       technologies: [
-        { name: 'Kotlin', icon: <Code size={32} className="text-purple-500" />, level: 'primary' },
-        { name: 'Spring Boot', icon: <Code size={32} className="text-green-500" />, level: 'primary' },
-        { name: 'MySQL', icon: <Database size={32} className="text-blue-500" />, level: 'primary' }
+        {
+          name: 'Kotlin',
+          logo: 'https://www.vectorlogo.zone/logos/kotlinlang/kotlinlang-icon.svg',
+          level: 'primary'
+        },
+        {
+          name: 'Spring Boot',
+          logo: 'https://www.vectorlogo.zone/logos/springio/springio-icon.svg',
+          level: 'primary'
+        },
+        {
+          name: 'MySQL',
+          logo: 'https://www.vectorlogo.zone/logos/mysql/mysql-official.svg',
+          level: 'primary'
+        }
       ]
     }
   ];
@@ -141,42 +165,23 @@ const ExperienceSection: React.FC = () => {
                           </div>
                         </div>
 
-                        {/* Technologies */}
-                        <div className="mb-6">
-                          <div className="flex flex-wrap gap-2">
-                            {exp.technologies.map((tech, i) => (
-                              <span 
-                                key={i}
-                                className={`inline-flex items-center px-3 py-1 rounded-full text-sm ${
-                                  tech.level === 'primary'
-                                    ? theme === 'dark'
-                                      ? 'bg-sky-400/20 text-sky-300'
-                                      : 'bg-sky-100 text-sky-800'
-                                    : theme === 'dark'
-                                      ? 'bg-gray-700 text-gray-300'
-                                      : 'bg-gray-100 text-gray-700'
-                                } transition-all duration-300 hover:scale-105`}
-                              >
-                                <span className="mr-1">{tech.icon}</span>
-                                {tech.name}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-
-                        {/* Technology Icons Grid */}
+                        {/* Technology Logos Grid */}
                         <div className="grid grid-cols-3 gap-4 mb-6">
                           {exp.technologies.map((tech, i) => (
                             <div 
                               key={i}
-                              className={`p-4 rounded-lg text-center transform transition-all duration-300 hover:scale-105 ${
+                              className={`p-4 rounded-lg text-center transform transition-all duration-300 hover:scale-110 ${
                                 theme === 'dark' 
                                   ? 'bg-gray-900' 
                                   : 'bg-gray-50'
                               }`}
                             >
-                              <div className="flex justify-center mb-2">
-                                {tech.icon}
+                              <div className="flex justify-center items-center h-16 mb-2">
+                                <img 
+                                  src={tech.logo} 
+                                  alt={tech.name}
+                                  className="h-12 w-12 object-contain"
+                                />
                               </div>
                               <div className={`text-sm font-medium ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
                                 {tech.name}
